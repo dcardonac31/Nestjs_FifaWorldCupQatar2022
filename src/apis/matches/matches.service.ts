@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios'
 import { HttpService } from '@nestjs/axios';
 import { AppConfiguration } from "read-appsettings-json";
 import { map, Observable } from 'rxjs';
-import { Response } from 'src/common/interface/response';
+import { Response } from 'src/common/dto/response';
 import { MatchResponseDto } from './dto/match-response.dto';
 import { MatchRequestDateDto } from './dto/match-request-date.dto';
 
@@ -69,15 +69,14 @@ export class MatchesService {
                 local_date_date: this.setLocaleDate(element.local_date)
             }));
             
-            const matchArrayOrderAsc = modifiedMatchResponse.sort((objA, objB) => 
-                objA.local_date_date.getTime() - objB.local_date_date.getTime());
+            const matchArrayOrderAsc = modifiedMatchResponse.sort(
+                (objA, objB) => objA.local_date_date.getTime() - objB.local_date_date.getTime()
+            );
 
             return modifiedMatchResponse;
     }
 
-    private setLocaleDate(date: string) : Date {
-        console.log(date);
-        
+    private setLocaleDate(date: string) : Date {       
         let stringDateTime = date.split(' ');
         let stringDate = stringDateTime[0].split('/');
         let stringTime = stringDateTime[1].split(':');

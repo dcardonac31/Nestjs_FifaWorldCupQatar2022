@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios'
 import { HttpService } from '@nestjs/axios';
 import { AppConfiguration } from "read-appsettings-json";
 import { map, Observable } from 'rxjs';
-import { Response } from 'src/common/interface/response';
+import { Response } from 'src/common/dto/response';
 import { TeamResponseDto } from './dto/team-response.dto';
 
 @Injectable()
